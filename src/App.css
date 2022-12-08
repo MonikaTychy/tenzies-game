@@ -1,3 +1,55 @@
+main {
+  width: 400px;
+  height: 400px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  place-self: center;
+}
+
+button {
+  background: rgb(7, 97, 231);
+  padding: 10px 30px;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  border: none;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
 .App {
+  width: 460px;
+  height: 480px;
+  background: #0B2434;
+  margin: 40px auto;
+  border-radius: 10px;
+  display: grid;
+}
+
+.title {
+  font-family: 'Karla';
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
   text-align: center;
+  color: #2B283A;
+}
+
+.instruction {
+font-family: 'Inter';
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+color: #4A4E74;
+margin: 0 30px;
+}
+
+.dice-container {
+  margin: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
 }
