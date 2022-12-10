@@ -13,7 +13,7 @@ export default function App() {
      const allHeld = dice.every(die => die.isHeld)
      const firstValue = dice[0].value
      const allTheSameValue = dice.every(die => die.value === firstValue)
-    //all the same values and all held setGameOver(true)
+  
     if (allHeld && allTheSameValue) {
       setGameOver(true)
     }
