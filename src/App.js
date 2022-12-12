@@ -22,14 +22,14 @@ export default function App() {
          if(seconds === 59) {
           setMinutes(minutes + 1)
           setSeconds(0)
-         } else {
-          clearInterval(time)
-         }
-
-         return () => clearInterval(time)
-
+         } 
  }, 1000)
-    }
+    } else {
+      clearInterval(time)
+     }
+
+     return () => clearInterval(time)
+     
   }, [gameOver, seconds, minutes])
   
 
