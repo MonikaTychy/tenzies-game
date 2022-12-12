@@ -3,11 +3,35 @@ import './App.css';
 import Die from './Die'
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
+import Statistic from './Statistic'
 
 export default function App() {
 
   const [dice, setDice] = useState(newDice())
   const [gameOver, setGameOver] = useState(false)
+  const [rolls, setRolls] = useState(0)
+  const [seconds, setSeconds] = useState(0)
+  const [minutes, setMinutes] = useState(0)
+
+  
+  useEffect(() => {
+    let time
+    if(gameOver === false) {
+      time = setInterval(() => {
+         setSeconds(seconds + 1)
+         if(seconds === 59) {
+          setMinutes(minutes + 1)
+          setSeconds(0)
+         } else {
+          clearInterval(time)
+         }
+
+         return () => clearInterval(time)
+
+ }, 1000)
+    }
+  }, [gameOver, seconds, minutes])
+  
 
   useEffect(() => {
      const allHeld = dice.every(die => die.isHeld)
@@ -39,10 +63,14 @@ function rollDice() {
   if (gameOver) {
     setDice(newDice)
     setGameOver(false)
+    setRolls(0)
+    setMinutes(0)
+    setSeconds(0)
   } else {
     setDice(prevDice => prevDice.map(die => {
       return die.isHeld ? die : createNewDie()
     }))
+    setRolls(rolls + 1)
   }
 }
 
@@ -72,6 +100,7 @@ const diceElements = dice.map( die => <Die
          {diceElements}
         </div>
         <button onClick={rollDice}>{gameOver ? "New Game" : "Roll"}</button>
+        <Statistic rolls={rolls} seconds={seconds} minutes={minutes} />
       </main>
     </div>
   );

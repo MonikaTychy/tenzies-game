@@ -1,9 +1,10 @@
 main {
   width: 400px;
-  height: 400px;
+  height: 420px;
   background: #F5F5F5;
   border-radius: 10px;
   place-self: center;
+  box-sizing: border-box;
 }
 
 button {

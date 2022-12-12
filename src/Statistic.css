@@ -1,0 +1,33 @@
+.statistic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "rolls time"
+    "bestTime bestTime";
+    margin: 10px 5px;
+}
+
+p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.stats-rolls {
+    grid-area: rolls;
+    text-align: start;
+}
+
+.stats-time {
+    text-align: end;
+}
+
+.stats-bestTime {
+    grid-area: bestTime;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #eb516b;
+    border: 1px solid #f0ced4;
+}
