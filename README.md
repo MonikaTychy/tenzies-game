@@ -1,7 +1,8 @@
-# React App tenzies game
+# React App 
+tenzies game
 
 ## Screenshots
-![react - tenzies](https://user-images.githubusercontent.com/104169534/207079572-c4e73d2f-5ec6-402c-a2e2-1f1d452d4b86.png)
+![react - tenzies](https://user-images.githubusercontent.com/104169534/207387389-5d46d3a6-f476-4d34-8046-026cd1ee56be.png)
 
 ### Installation
 Project is hosted on Netlify, just open this URL [https://cheerful-wisp-62c225.netlify.app/](https://bright-centaur-841f7c.netlify.app/)
