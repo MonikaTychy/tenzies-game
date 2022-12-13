@@ -4,13 +4,13 @@
     grid-template-rows: auto;
     grid-template-areas: 
     "rolls time"
-    "bestTime bestTime";
+    "lastTime lastTime";
     margin: 10px 5px;
 }
 
 p {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -20,14 +20,14 @@ p {
 }
 
 .stats-time {
+    grid-area: time;
     text-align: end;
 }
 
-.stats-bestTime {
-    grid-area: bestTime;
+.stats-lastTime {
+    grid-area: lastTime;
     text-align: center;
     margin: 10px 0;
-    font-size: 16px;
-    color: #eb516b;
-    border: 1px solid #f0ced4;
+    font-size: 12px;
+    color: #413f3f;
 }

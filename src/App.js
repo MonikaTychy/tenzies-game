@@ -10,28 +10,29 @@ export default function App() {
   const [dice, setDice] = useState(newDice())
   const [gameOver, setGameOver] = useState(false)
   const [rolls, setRolls] = useState(0)
-  const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(0)
+  const [counter, setCounter] = useState(0)
+  const [lastTime, setLastTime] = useState(() => JSON.parse(localStorage.getItem("lastTime")) || [])
 
+  useEffect(() => {
+      if(gameOver) {
+        setLastTime(counter)
+        localStorage.setItem("lastTime", JSON.stringify(counter))
+      }
+  }, [gameOver, counter])
   
   useEffect(() => {
-    let time
+    let timer
     if(gameOver === false) {
-      time = setInterval(() => {
-         setSeconds(seconds + 1)
-         if(seconds === 59) {
-          setMinutes(minutes + 1)
-          setSeconds(0)
-         } 
+      timer = setInterval(() => {
+         setCounter(counter + 1)
  }, 1000)
     } else {
-      clearInterval(time)
+      clearInterval(timer)
      }
 
-     return () => clearInterval(time)
+     return () => clearInterval(timer)
      
-  }, [gameOver, seconds, minutes])
-  
+  }, [gameOver, counter])
 
   useEffect(() => {
      const allHeld = dice.every(die => die.isHeld)
@@ -64,8 +65,7 @@ function rollDice() {
     setDice(newDice)
     setGameOver(false)
     setRolls(0)
-    setMinutes(0)
-    setSeconds(0)
+    setCounter(0)
   } else {
     setDice(prevDice => prevDice.map(die => {
       return die.isHeld ? die : createNewDie()
@@ -100,7 +100,7 @@ const diceElements = dice.map( die => <Die
          {diceElements}
         </div>
         <button onClick={rollDice}>{gameOver ? "New Game" : "Roll"}</button>
-        <Statistic rolls={rolls} seconds={seconds} minutes={minutes} />
+        <Statistic rolls={rolls} counter={counter} lastTime={lastTime} />
       </main>
     </div>
   );
